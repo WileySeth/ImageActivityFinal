@@ -9,17 +9,20 @@ class MainActivity : AppCompatActivity() {
 
 
     private lateinit var  imageAdapter: ImageAdapter
-    private var dataList = mutableListOf<DataModel>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        var dataList = mutableListOf<DataModel>()
+        var  imageAdapter: ImageAdapter = ImageAdapter(this)
 
 
 
-        recyclerView.layoutManager = GridLayoutManager(applicationContext,3)
-        imageAdapter = ImageAdapter(applicationContext)
+
+        recyclerView.layoutManager = GridLayoutManager(this,3)
+
         recyclerView.adapter = imageAdapter
 
         dataList.add(DataModel("1st Cheese","Some Cheese",R.drawable.cheese1))

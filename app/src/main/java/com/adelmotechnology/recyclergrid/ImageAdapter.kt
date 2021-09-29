@@ -1,5 +1,6 @@
 package com.adelmotechnology.recyclergrid
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -36,12 +37,16 @@ class ImageAdapter(var context: Context) : RecyclerView.Adapter<ImageAdapter.Vie
     }
 
     override fun onBindViewHolder(holder: ImageAdapter.ViewHolder, position: Int) {
-        var data = dataList[position]
+        var images = dataList[position]
 
-        holder.title.text = data.title
-        holder.desc.text = data.desc
+        holder.title.text = images.title
+        holder.desc.text = images.desc
 
-        holder.image.setImageResource(data.image)
+        holder.image.setImageResource(images.image)
+
+        holder.image.setOnClickListener(){
+            (context as Activity).findViewById<ImageView>(R.id.myImageView).setImageResource(images.image)
+            (context as Activity).findViewById<TextView>(R.id.title).text = images.title }
     }
 
 
